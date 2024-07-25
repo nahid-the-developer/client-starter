@@ -4,7 +4,9 @@ import {SessionProvider} from "@/providers/SessionProvider";
 import {TokenProvider} from "@/context/tokenContext";
 import {AppRouterCacheProvider} from "@mui/material-nextjs/v13-appRouter";
 import ThemeProvider from "@/providers/themeProvider";
-import {ThemeProvider as NextThemeProvider, useTheme} from "next-themes";
+import {ThemeProvider as NextThemeProvider} from "next-themes";
+import "react-toastify/dist/ReactToastify.css";
+import {ToastContainer} from "react-toastify";
 
 const inter = Inter({subsets: ["latin"]});
 
@@ -17,15 +19,18 @@ export default function RootLayout({children}) {
     return (
         <html lang="en" suppressHydrationWarning={true}>
         <body className={inter.className}>
-        <NextThemeProvider defaultTheme='dark'>
-            <AppRouterCacheProvider options={{key: 'css'}}>
-                <ThemeProvider>
-                    <SessionProvider>
-                        <TokenProvider>
-                            {children}
-                        </TokenProvider>
-                    </SessionProvider>
-                </ThemeProvider>
+        <NextThemeProvider defaultTheme="dark">
+            <AppRouterCacheProvider options={{key: "css"}}>
+                <SessionProvider>
+                    <TokenProvider>
+                        <ThemeProvider>
+                            <div className="container">
+                                {children}
+                                <ToastContainer/>
+                            </div>
+                        </ThemeProvider>
+                    </TokenProvider>
+                </SessionProvider>
             </AppRouterCacheProvider>
         </NextThemeProvider>
         </body>

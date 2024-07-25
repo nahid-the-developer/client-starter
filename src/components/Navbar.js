@@ -1,5 +1,6 @@
 import React from 'react';
 import {AppBar, styled, Switch, Toolbar, Typography} from "@mui/material";
+import "../app/globals.css";
 
 const MaterialUISwitch = styled(Switch)(({theme}) => ({
     width: 62,
@@ -50,8 +51,8 @@ const MaterialUISwitch = styled(Switch)(({theme}) => ({
 
 const Navbar = ({toggleThemeMode, darkMode}) => {
     return (
-        <AppBar position="static">
-            <Toolbar>
+        <AppBar position="sticky">
+            <Toolbar className="nav-container">
                 <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
                     App Name
                 </Typography>
