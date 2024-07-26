@@ -1,7 +1,7 @@
-import {NextResponse} from 'next/server'
+import { NextResponse } from 'next/server'
 
 export function middleware(request) {
-    const {cookies, nextUrl, url} = request
+    const { cookies, nextUrl, url } = request
     const sessionToken = cookies.get('next-auth.session-token')?.value
     const currentPath = nextUrl.pathname
 
@@ -9,7 +9,7 @@ export function middleware(request) {
         '/auth/login',
         '/auth/signup',
         '/auth/reset_password',
-        '/auth/forgot_password'
+        '/auth/forgot_password',
     ]
     const isProtectedRoute = loginUserCannotAccess.includes(currentPath)
 
